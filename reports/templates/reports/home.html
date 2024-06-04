@@ -1,0 +1,11 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Claims</h1>
+  <ul>
+    {% for claim in claims %}
+      <li>{{ claim }}</li>
+    {% endfor %}
+  </ul>
+  <a href="{% url 'add_claim' %}">Add Claim</a>
+{% endblock %}
