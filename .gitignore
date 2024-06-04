@@ -1,4 +1,10 @@
 .env
 .env/
 .sqlite3
+__pycache__
+__pycache__/
+db.sqlite3 
+0001_initial.py
+0002_initial.py
+0003_initial.py
 
