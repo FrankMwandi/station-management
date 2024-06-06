@@ -1,0 +1,43 @@
+{% extends "base_generic.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+<h2 class="mb-4">Dashboard</h2>
+<div class="row">
+    <div class="col-md-6 mb-3">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Register New Claim</h5>
+                <p class="card-text">Record a new claim in the system.</p>
+                <a href="{% url 'create_claim' %}" class="btn btn-primary btn-block">Register</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 mb-3">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Add Accuser Details</h5>
+                <p class="card-text">Add details of a new accuser.</p>
+                <a href="{% url 'add_accuser' %}" class="btn btn-primary btn-block">Add Accuser</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 mb-3">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Add Accused Details</h5>
+                <p class="card-text">Add details of a new accused.</p>
+                <a href="{% url 'add_accused' %}" class="btn btn-primary btn-block">Add Accused</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 mb-3">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">View Claims Statistics</h5>
+                <p class="card-text">View statistics of the claims reported.</p>
+                <a href="{% url 'claim_stats' %}" class="btn btn-primary btn-block">View Statistics</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
