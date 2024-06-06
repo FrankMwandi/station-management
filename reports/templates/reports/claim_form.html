@@ -1,0 +1,29 @@
+{% extends "base_generic.html" %}
+{% block title %}Submit Claim{% endblock %}
+{% block content %}
+<h2 class="mb-4">Submit Claim</h2>
+<form method="post" class="needs-validation" novalidate>
+    {% csrf_token %}
+    <div class="form-group">
+        {{ form.accuser.label_tag }}
+        {{ form.accuser }}
+    </div>
+    <div class="form-group">
+        {{ form.accused.label_tag }}
+        {{ form.accused }}
+    </div>
+    <div class="form-group">
+        {{ form.station.label_tag }}
+        {{ form.station }}
+    </div>
+    <div class="form-group">
+        {{ form.claim_details.label_tag }}
+        {{ form.claim_details }}
+    </div>
+    <div class="form-group">
+        {{ form.status.label_tag }}
+        {{ form.status }}
+    </div>
+    <button type="submit" class="btn btn-primary btn-block">Submit Claim</button>
+</form>
+{% endblock %}

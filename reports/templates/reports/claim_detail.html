@@ -1,0 +1,29 @@
+{% extends "base_generic.html" %}
+{% block title %}Claim Details{% endblock %}
+{% block content %}
+<h1 class="mb-4">Claim Details</h1>
+<div class="card mb-4">
+    <div class="card-body">
+        <h5 class="card-title">{{ claim.accuser.accuser_name }}</h5>
+        <p class="card-text"><strong>Issue Details:</strong> {{ claim.claim_details }}</p>
+        <p class="card-text"><strong>Accused Names:</strong> {{ claim.accused.accused_name }}</p>
+    </div>
+</div>
+
+<h2>Progress</h2>
+<ul class="list-group mb-4">
+    {% for progress in progress %}
+    <li class="list-group-item">{{ progress.date_added }}: {{ progress.description }} (by {{ progress.added_by.username }})</li>
+    {% endfor %}
+</ul>
+
+<h3>Add Progress</h3>
+<form method="post" action="{% url 'add_progress' claim.id %}" class="needs-validation" novalidate>
+    {% csrf_token %}
+    <div class="form-group">
+        {{ form.description.label_tag }}
+        {{ form.description }}
+    </div>
+    <button type="submit" class="btn btn-primary btn-block">Add Progress</button>
+</form>
+{% endblock %}
