@@ -19,7 +19,8 @@ class Station(models.Model):
 class Accuser(models.Model):
     accuser_name = models.CharField(max_length=100)
     accuser_contact = models.TextField()
-    
+    accuser_location = models.CharField(max_length=200, blank=True)
+
     def __str__(self):
         return self.accuser_name
 
@@ -31,7 +32,8 @@ class Accuser(models.Model):
 class Accused(models.Model):
     accused_name = models.CharField(max_length=100)
     accused_contact = models.TextField()
-    
+    accused_location = models.CharField(max_length=200, blank=True)
+
     def __str__(self):
         return self.accused_name
 
