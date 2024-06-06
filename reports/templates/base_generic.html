@@ -1,33 +1,104 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Arusha Police System{% endblock %}</title>
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <title>{% block title %}Police Station Management{% endblock %}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            padding-bottom: 70px;
+            font-family: Arial, sans-serif;
+        }
+        .navbar {
+            background-color: #343a40;
+        }
+        .navbar-brand, .nav-link {
+            color: #fff !important;
+        }
+        .footer-nav {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: #343a40;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+            z-index: 1030;
+        }
+        .footer-nav .nav-link {
+            color: #fff !important;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .card-body p {
+            margin-bottom: 10px;
+        }
+        .list-group-item {
+            padding: 1rem;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+        .container {
+            max-width: 900px;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <h1>Arusha Police System</h1>
-        <nav>
-            <ul>
-                <li><a href="{% url 'home' %}">Home</a></li>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="/">Police Station Management</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
                 {% if user.is_authenticated %}
-                    <li><a href="{% url 'add_claim' %}">Add Claim</a></li>
-                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'dashboard' %}"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                </li>
                 {% else %}
-                    <li><a href="{% url 'login' %}">Login</a></li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'login' %}"><i class="fas fa-sign-in-alt"></i> Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'register' %}"><i class="fas fa-user-plus"></i> Register</a>
+                </li>
                 {% endif %}
             </ul>
-        </nav>
-    </header>
-    <main>
+        </div>
+    </nav>
+    
+    <div class="container mt-4">
         {% block content %}
         {% endblock %}
-    </main>
-    <footer>
-        <p>&copy; 2024 Arusha Police </p>
-    </footer>
+    </div>
+    
+    <nav class="navbar navbar-expand-lg navbar-dark footer-nav">
+        <div class="container">
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'create_claim' %}"><i class="fas fa-file-alt"></i> Register New Claim</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'add_accuser' %}"><i class="fas fa-user-plus"></i> Add Accuser</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'add_accused' %}"><i class="fas fa-user-minus"></i> Add Accused</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'claim_stats' %}"><i class="fas fa-chart-bar"></i> View Statistics</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
 </body>
 </html>
