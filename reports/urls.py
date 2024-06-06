@@ -1,11 +1,11 @@
 from django.urls import path
-from django.contrib.auth import views as auth_views
-from . import views
+from .views import ClaimCreateView, ClaimDetailView, ProgressAddView, ClaimStatsView, AccuserCreateView, AccusedCreateView
 
 urlpatterns = [
-    path('', views.home, name='home'),
-    path('add_claim/', views.add_claim, name='add_claim'),
-    path('update_progress/<int:claim_id>/', views.update_progress, name='update_progress'),
-    path('login/', auth_views.LoginView.as_view(), name='login'),
-    path('logout/', auth_views.LogoutView.as_view(), name='logout'),
+    path('create/', ClaimCreateView.as_view(), name='create_claim'),
+    path('<int:claim_id>/', ClaimDetailView.as_view(), name='claim_detail'),
+    path('<int:claim_id>/add_progress/', ProgressAddView.as_view(), name='add_progress'),
+    path('stats/', ClaimStatsView.as_view(), name='claim_stats'),
+    path('add_accuser/', AccuserCreateView.as_view(), name='add_accuser'),
+    path('add_accused/', AccusedCreateView.as_view(), name='add_accused'),
 ]
