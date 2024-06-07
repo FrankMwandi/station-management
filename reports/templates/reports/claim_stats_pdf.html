@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Claim Statistics</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .card {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            padding: 15px;
+        }
+        .card-title {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+<h2>Claim Statistics</h2>
+<div class="card">
+    <h5 class="card-title">Reports Today</h5>
+    <p>{{ reports_today }}</p>
+</div>
+<div class="card">
+    <h5 class="card-title">Reports This Week</h5>
+    <p>{{ reports_week }}</p>
+</div>
+<div class="card">
+    <h5 class="card-title">Reports This Month</h5>
+    <p>{{ reports_month }}</p>
+</div>
+<div class="card">
+    <h5 class="card-title">In Progress</h5>
+    <p>{{ in_progress }}</p>
+</div>
+<div class="card">
+    <h5 class="card-title">Solved</h5>
+    <p>{{ solved }}</p>
+</div>
+<div class="card">
+    <h5 class="card-title">Stagnant</h5>
+    <p>{{ stagnant }}</p>
+</div>
+<h3>All Claims</h3>
+{% for claim in all_claims %}
+<div class="card">
+    <h5 class="card-title">{{ claim.accuser.accuser_name }} vs {{ claim.accused.accused_name }}</h5>
+    <p>{{ claim.claim_details }}</p>
+    <p><small>{{ claim.date_reported }}</small></p>
+</div>
+{% endfor %}
+</body>
+</html>
