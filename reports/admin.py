@@ -1,6 +1,11 @@
 from django.contrib import admin
 from .models import Station, Accuser, Accused, Claim, Progress
 
+from simple_history.admin import SimpleHistoryAdmin
+
+class AccuserHistoryAdmin(SimpleHistoryAdmin):
+    list_display = ('history',)
+
 class StationAdmin(admin.ModelAdmin):
     list_display = ('station_name','station_location')
     search_fields = ('station_name','station_location')
@@ -9,8 +14,8 @@ class AccuserAdmin(admin.ModelAdmin):
     list_display = ('accuser_name','accuser_contact')
     search_fields = ('accuser_name','accuser_contact')
 
-class AccusedAdmin(admin.ModelAdmin):
-    list_display = ('accused_name','accused_contact')
+class AccusedAdmin(SimpleHistoryAdmin):
+    list_display = ('accused_name','accused_contact', 'history')
     search_fields = ('accused_name','accused_contact') 
 
 class ClaimAdmin(admin.ModelAdmin):
@@ -28,4 +33,5 @@ admin.site.register(Accused, AccusedAdmin)
 admin.site.register(Accuser, AccuserAdmin)
 admin.site.register(Claim, ClaimAdmin)
 admin.site.register(Progress, ProgressAdmin)
+
 
