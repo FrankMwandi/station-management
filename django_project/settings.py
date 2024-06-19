@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     
     #Added apps
     "reports",
+    "simple_history",
 ]
 
 MIDDLEWARE = [
