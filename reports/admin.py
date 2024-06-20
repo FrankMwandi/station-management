@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .models import Station, Accuser, Accused, Claim, Progress
-
+from .models import User
 from simple_history.admin import SimpleHistoryAdmin
 
 class AccuserHistoryAdmin(SimpleHistoryAdmin):
@@ -34,4 +34,6 @@ admin.site.register(Accuser, AccuserAdmin)
 admin.site.register(Claim, ClaimAdmin)
 admin.site.register(Progress, ProgressAdmin)
 
+admin.site.unregister(User)  # Unregister the original User admin
+admin.site.register(User, SimpleHistoryAdmin)  # Register the User model with SimpleHistoryAdmin
 
