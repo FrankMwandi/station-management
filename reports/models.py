@@ -2,8 +2,10 @@ from django.db import models
 from django.contrib.auth import get_user_model
 from django.utils import timezone
 from simple_history.models import HistoricalRecords
+from simple_history import register
 
 User = get_user_model()
+register(User)
 
 class Station(models.Model):
     station_name = models.CharField(max_length=100)
